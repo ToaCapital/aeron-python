@@ -13,7 +13,7 @@ ExternalProject_Add(fmt
         -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
         -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target fmt
+        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target fmt -- -Wno-dev
         INSTALL_COMMAND ""
         BUILD_BYPRODUCTS
         "${CMAKE_CURRENT_BINARY_DIR}/fmt-prefix/src/fmt-build/libfmt.a")
@@ -37,7 +37,7 @@ ExternalProject_Add(aeron
         -DCMAKE_CXX_FLAGS=${CMAKE_CXX_FLAGS}
         -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
-        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target aeron_client
+        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target aeron_client -- -Wno-dev
         INSTALL_COMMAND ""
         BUILD_BYPRODUCTS
         "${CMAKE_CURRENT_BINARY_DIR}/aeron-prefix/src/aeron-build/lib/libaeron_client.a")
@@ -61,7 +61,7 @@ ExternalProject_Add(aeron-archive-client
         -DCMAKE_EXE_LINKER_FLAGS=${CMAKE_EXE_LINKER_FLAGS}
         -DCMAKE_POSITION_INDEPENDENT_CODE=ON
         -DBOOST_ROOT=${BOOST_ROOT}
-        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target aeron_archive_client
+        BUILD_COMMAND ${CMAKE_COMMAND} --build . --target aeron_archive_client -- -Wno-dev
         INSTALL_COMMAND ""
         BUILD_BYPRODUCTS
         "${CMAKE_CURRENT_BINARY_DIR}/aeron-archive-client-prefix/src/aeron-archive-client-build/src/libaeron_archive_client.a")

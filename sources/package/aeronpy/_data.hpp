@@ -86,4 +86,5 @@ public:
      */
     static std::string __str__(aeron::Header& self);
 
+    static int32_t reserved_value(aeron::Header& self);
 };

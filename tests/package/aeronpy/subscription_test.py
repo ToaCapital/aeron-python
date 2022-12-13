@@ -1,11 +1,12 @@
 import os
 from datetime import timedelta
-from time import sleep
-from hamcrest import *
-from pytest import fixture
 from tempfile import _get_candidate_names as temp_dir_candidates, tempdir
+from time import sleep
+
 from aeronpy import Context
 from aeronpy.driver import media_driver
+from hamcrest import *
+from pytest import fixture
 
 
 @fixture()
@@ -149,13 +150,6 @@ def test_poll__multiple_sessions(aeron_directory, ipc_publication_1, ipc_publica
     result = subscription.poll(lambda data, header: received.append((header.session_id, bytes(data))))
     assert_that(result, is_(equal_to(2)))
     assert_that(received, has_length(2))
-
-
-def test_poll_eos__no_data(aeron_directory, ipc_publication, stream_id):
-    context = Context(aeron_dir=aeron_directory)
-    subscription = context.add_subscription('aeron:ipc', stream_id)
-    result = subscription.poll_eos()
-    assert_that(result, is_(0))
 
 
 # def test_poll_eos__single_image(aeron_directory):

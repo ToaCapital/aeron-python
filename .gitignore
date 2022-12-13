@@ -1,0 +1,5 @@
+.idea
+build/*
+.python-version
+*.egg-info/*
+*.so

@@ -61,7 +61,12 @@ int32_t header::session_id(Header& self)
 
 string header::__str__(Header& self)
 {
-    return format("header: stream_id:[{}] session_id:[{}]", self.streamId(), self.sessionId());
+    return format("header: stream_id:[{}] session_id:[{}] reserved_value:[{}]", self.streamId(), self.sessionId(), self.reservedValue());
+}
+
+int32_t header::reserved_value(Header& self)
+{
+    return self.reservedValue();
 }
 
 PYBIND11_MODULE(_data, m)
@@ -76,6 +81,7 @@ PYBIND11_MODULE(_data, m)
     py::class_<Header>(m, "Header")
             .def_property_readonly("stream_id", &header::session_id)
             .def_property_readonly("session_id", &header::session_id)
+            .def_property_readonly("reserved_value", &header::reserved_value)
             .def("__str__", &header::__str__);
 
     m.attr("NOT_CONNECTED") = NOT_CONNECTED;

@@ -23,7 +23,10 @@ def main():
         while True:
             fragments_read = subscription.poll(lambda data: print(bytes(data)))
             if fragments_read == 0:
-                eos_count = subscription.poll_eos(lambda *args: print(f'end of stream: {args}'))
+                eos_count = 0
+                for image in subscription.images:
+                    if image.is_end_of_stream:
+                        eos_count += 1
                 if eos_count > 0:
                     break
 
