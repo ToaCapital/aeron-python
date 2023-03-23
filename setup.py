@@ -1,13 +1,13 @@
-import os
-import re
-import sys
 import multiprocessing
+import os
 import platform
+import re
 import subprocess
+import sys
+from distutils.version import LooseVersion
 
 from setuptools import setup, Extension, find_packages, findall
 from setuptools.command.build_ext import build_ext
-from distutils.version import LooseVersion
 
 
 class CMakeExtension(Extension):
@@ -123,5 +123,5 @@ setup(
     ext_modules=[CMakeExtension('aeronpy')],
     cmdclass=dict(build_ext=CMakeBuild),
     zip_safe=False,
-    python_requires='>=3.6.*'
+    python_requires='>=3.6.0'
 )
