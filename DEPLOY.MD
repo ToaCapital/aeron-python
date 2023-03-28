@@ -5,11 +5,17 @@ mdir build
 cd build
 cmake .
 cmake --build . --target all
-cmake --build . --target build-wheel
 ```
+
+Build wheels
+
+```shell
+pip install cibuildwheel
+cibuildwheel --platform=macos
+````
 
 Upload
 
 ```shell
-twine upload --repository nexus build/*.whl 
+twine upload --repository nexus wheelhouse/*.whl 
 ```

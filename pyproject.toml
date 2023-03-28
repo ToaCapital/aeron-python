@@ -1,0 +1,4 @@
+[tool.cibuildwheel]
+build = "cp39-* cp310-*"
+
+
